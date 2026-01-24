@@ -35,8 +35,8 @@ def get_jobs_cv_keskus(start: int, location: int, category: int) -> list["_CvkJo
             link_text = "https://www.cvkeskus.ee" + link
 
             job_dict: _CvkJobs = {
-                "position": position.text,
-                "company": company.text,
+                "position": position.text.strip(),
+                "company": company.text.strip(),
                 "time": convertCVKeskusToCVTimeFormat(time_text),
                 "salary": salary_text,
                 "link": link_text
