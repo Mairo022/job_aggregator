@@ -1,4 +1,4 @@
-from constants import ADS_LIMIT, LOCATIONS_CVK, CATEGORIES_CVK, LOCATIONS_CV, CATEGORIES_CV, LOCATIONS
+from constants import ADS_LIMIT, LOCATIONS_CVK, CATEGORIES_CVK, LOCATIONS_CV, CATEGORIES_CV
 from datetime import datetime, timezone, timedelta
 
 

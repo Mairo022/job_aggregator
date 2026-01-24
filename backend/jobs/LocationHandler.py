@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from typing import TypedDict, Optional
 
-import scraper
+from jobs import scraper
 from constants import CACHE_LIFESPAN, ADS_LIMIT, CATEGORIES
 
 

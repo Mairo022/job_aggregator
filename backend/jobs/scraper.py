@@ -4,7 +4,7 @@ from typing import TypedDict
 import requests
 import traceback
 from bs4 import BeautifulSoup
-from scraperUtils import *
+from jobs.scraperUtils import *
 
 
 def get_jobs_cv_keskus(start: int, location: int, category: int) -> list["_CvkJobs"]:
