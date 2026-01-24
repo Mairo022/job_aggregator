@@ -1,4 +1,5 @@
 <?php
+require 'constants.php';
 
 function request_job_data($url, $ip) {
     $jobsRequest = curl_init($url);
@@ -19,6 +20,12 @@ function request_job_data($url, $ip) {
 
 function get_location_id() {
     return isset($_GET['location']) ? intval($_GET['location']) : 2;
+}
+
+function create_filter_location_id($locationID, $categoryID) {
+    if ($categoryID == 1) return $locationID;
+    if (count(LOCATIONS_IT) > $locationID) return $locationID;
+    return 0;
 }
 
 function get_category_id() {

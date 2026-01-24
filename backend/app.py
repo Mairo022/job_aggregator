@@ -1,14 +1,12 @@
 import logging
 import os
 import threading
-import time
 import traceback
 
 from flask import Flask, jsonify, request, abort
-from jobs.LocationHandler import LocationHandler
 from RateLimiter import RateLimiter
-from constants import LOCATIONS_AVAILABLE, CATEGORIES_AVAILABLE, ADS_LIMIT, LOCALHOST_IP, CACHE_LIFESPAN, CATEGORIES, \
-    CATEGORY_IT_LOCATIONS
+from constants import (LOCATIONS_AVAILABLE, CATEGORIES_AVAILABLE, ADS_LIMIT, LOCALHOST_IP,
+                       CATEGORIES, CATEGORY_IT_LOCATIONS)
 from jobs.get_jobs import get_jobs, cleanup_location_handlers
 
 app = Flask(__name__)
@@ -39,6 +37,9 @@ def jobs_data():
 
     if category not in CATEGORIES_AVAILABLE:
         abort(400, "Invalid category")
+
+    if category == CATEGORIES.IT.value and location not in CATEGORY_IT_LOCATIONS:
+        abort(400, "Invalid category location")
 
     try:
         jobs = get_jobs(start, location, category)

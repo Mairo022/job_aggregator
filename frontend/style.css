@@ -155,7 +155,7 @@ button {
         background-color: #F9F9F9;
         box-shadow: var(--shadow);
         overflow-y: hidden;
-        transition: padding 0.2s 0.2s, height 0.2s ease-in-out;
+        transition: padding 0.15s ease-in-out, height 0.15s ease-in-out;
 
         &::-webkit-scrollbar {
             width: 10px;
@@ -180,7 +180,7 @@ button {
         height: 400px;
         padding: 10px 10px;
         overflow-y: auto;
-        transition: height 0.2s ease-in-out;
+        transition: height 0.15s ease-in-out, padding 0.15s ease-in-out;
     }
 
     .location__options__option {

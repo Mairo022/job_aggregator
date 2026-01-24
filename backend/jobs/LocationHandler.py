@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from typing import TypedDict, Optional
 
 from jobs import scraper
-from constants import CACHE_LIFESPAN, ADS_LIMIT, CATEGORIES
+from constants import CACHE_LIFESPAN, ADS_LIMIT
 
 
 class LocationHandler:
@@ -13,12 +13,6 @@ class LocationHandler:
         self.leftovers_cvk: dict[int, "_Jobs"] = dict()
 
     def get_jobs(self, start: int, location: int, category: int) -> dict[str, list]:
-        if CATEGORIES.ALL.value != category:
-            return {
-                "cv": scraper.get_jobs_cv(start, location, category),
-                "cv_keskus": scraper.get_jobs_cv_keskus(start, location, category)
-            }
-
         cached_cv = self._get_cached_jobs("cv", start)
         cached_cvk = self._get_cached_jobs("cvk", start)
 

@@ -17,6 +17,7 @@ savedButton.addEventListener("click", handleSavedViewButtonClick)
 
 initialLoadSelectLocation()
 initialSetITFilterStatus()
+initialLoadSelectOptionsMaxHeight()
 
 assignSavedJobStatus()
 
@@ -41,6 +42,12 @@ function initialLoadSelectLocation() {
             locationSelectText.innerText = option.innerText
         }
     }
+}
+
+function initialLoadSelectOptionsMaxHeight() {
+    const category = urlParams.get("category")
+
+    if (category == '1') locationOptions.style.maxHeight = "190px";
 }
 
 function handleLocationSelectState() {

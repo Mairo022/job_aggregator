@@ -10,6 +10,7 @@
     $ip = get_ip_address();
     $locationID = get_location_id();
     $categoryID = get_category_id();
+    $filterLocationID = create_filter_location_id($locationID, $categoryID);
     [$offset, $offsetPrevious, $offsetNext] = get_offsets();
 
     $url = API_URL . "/jobs?location={$locationID}&start={$offset}&category={$categoryID}";
@@ -44,6 +45,7 @@
                         </div>
                     </div>
                     <ul class="location__options">
+                    <?php if ($categoryID == 0): ?>
                         <?php foreach (LOCATIONS as $id => $location): ?>
                             <li class="location__options__option" data-id="<?= $id ?>">
                                 <a class="location__options__option__link" href='<?= "?location=$id&start=0&category=$categoryID" ?>'>
@@ -51,9 +53,18 @@
                                 </a>
                             </li>
                         <?php endforeach; ?>
+                    <?php else: ?>
+                        <?php foreach (LOCATIONS_IT as $id => $location): ?>
+                            <li class="location__options__option" data-id="<?= $id ?>">
+                                <a class="location__options__option__link" href='<?= "?location=$id&start=0&category=$categoryID" ?>'>
+                                    <?= $location ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                     </ul>
                 </div>
-                <a class="filter" href='<?= $categoryID == 0 ? "?location=0&category=1" : "?location={$locationID}&category=0 " ?>'>
+                <a class="filter" href='<?= $categoryID == 0 ? "?location={$filterLocationID}&category=1" : "?location={$filterLocationID}&category=0 " ?>'>
                     <div class="filter__status" id="it_filter_status"></div>
                     <span class="filter__text">IT Töö</span>
                 </a>

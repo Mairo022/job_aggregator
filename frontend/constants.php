@@ -16,3 +16,9 @@ define('LOCATIONS', array(
     9 => "Viljandi",
     10 => "Võru"
 ));
+define('LOCATIONS_IT', array(
+    0 => "Eesti",
+    1 => "Tallinn",
+    2 => "Tartu",
+    3 => "Pärnu"
+));
